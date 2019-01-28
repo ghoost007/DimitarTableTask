@@ -1,15 +1,15 @@
-import dummyData from "../dummyData";
 import React from "react";
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import TableFilter from "./TableFilter";
+import AppHeader from "./Header";
 
 export default class TableApp extends React.Component {
     state = {
         initialData: [], // data that comes from the server
         filterData: [], // values used as options in select filter 
         selectedFilter: 'none', // selected value to filter, none by default
-        tableHeaders: ['Id','UserId', 'Title', 'Body', '' ],// array specifying columns headers 
+        tableHeaders: ['Id','User Id', 'Title', 'Body', '' ],// array specifying columns headers 
         tableBody: [], // data which is manipulated; 
     };
     filterTable() {
@@ -40,7 +40,6 @@ export default class TableApp extends React.Component {
                 }
                 else return item
             })
-            console.log(data);
             return data
         });
     }
@@ -62,14 +61,20 @@ export default class TableApp extends React.Component {
     render(){
        return(
             <div>
-                <h2>Test Table</h2>
-                <TableFilter options={this.state.filterData} handleSelectFilterOption={this.handleSelectFilterOption}/>
-                <table>
-                    <TableHeader headers={this.state.tableHeaders} />
-                    <TableBody data={this.state.tableBody}
-                               handleDeleteRow={this.handleDeleteRow} 
-                               handleUpdateRow={this.handleUpdateRow}/>
-                </table>
+                <AppHeader />
+                <div className="container">
+                    <TableFilter options={this.state.filterData} handleSelectFilterOption={this.handleSelectFilterOption}/>
+                    <div className="table-wrapper">  
+                        <table>
+                            <TableHeader headers={this.state.tableHeaders} />
+                            <TableBody data={this.state.tableBody}
+                             handleDeleteRow={this.handleDeleteRow} 
+                             handleUpdateRow={this.handleUpdateRow}
+                            />
+                        </table>    
+                    </div>
+                    <div className="app-footer"></div>
+                </div>
             </div>
         );
     }

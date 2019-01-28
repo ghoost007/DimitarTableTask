@@ -1,4 +1,112 @@
-$brand-color: red; 
-*{
-    color: $brand-color;
+@import './variables';
+
+html{
+    font-size: 62.5%;
+}
+body{
+    background: $dark-blue;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: $m-size;
+    overflow: hidden;
+}
+.container{
+    max-width: 100rem;
+    margin: 0 auto;
+}
+.header {
+    background: $off-black;
+    color: white;
+    margin: 0 0 $xl-size 0;
+    padding: $m-size 0;
+    text-align: center;
+
+    .header-title{
+        font-size: $l-size;
+        margin: 0
+    }
+}
+
+.button {
+    background: $purple;
+    border: none;
+    border-bottom: .3rem solid darken($purple, 10%);
+    color: white;
+    font-weight: 500;
+    padding: $s-size;
+    cursor: pointer;
+  }
+
+.form-group{
+    padding: 1rem;
+    border-bottom: .1rem solid darken($purple, 10%);;
+    margin: 1rem;
+
+    label{
+        color: white;
+        margin-right: 1rem
+    }
+    select{
+        padding: .2rem;
+        width: 10rem;
+        height: 3rem;
+        outline: none;
+        border: none;
+    }
+
+}
+.table-wrapper{
+    height: 80vh;
+    overflow-y: auto;
+        table{
+        width:100%;
+
+        thead{
+            position: sticky;
+            background-color: #3c4251;
+            position: -webkit-sticky;
+            top: 0;
+            z-index: 999;
+        
+            .table-header-row{
+                background-color: $blue;
+                color: $off-white;
+                th {
+                    position: sticky;
+                    background-color: #3c4251;
+                    position: -webkit-sticky;
+                    top: 0;
+                    z-index: 999;
+                }
+            }
+        }
+        .table-body-row{
+            background-color: $light-blue;
+            color: white;
+        }
+        td:focus{
+            outline: none;
+            -webkit-box-shadow: inset 0px 0px 5px 1px $purple;
+            -moz-box-shadow: inset 0px 0px 5px 1px $purple;
+            box-shadow: inset 0px 0px 5px 1px $purple;
+        }
+
+        th,td{
+            padding: 1rem 1.5rem;
+        }
+        th:first-of-type,
+        td:first-of-type{
+            padding-left: 2.5rem;
+        }
+        th:last-of-type,
+        td:last-of-type{
+            padding-right: 2.5rem;
+        }
+        td:nth-child(1),td:nth-child(2) {
+            text-align: center;
+        }
+    }
+}
+
+.app-footer{
+    height: 2rem;
 }

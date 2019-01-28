@@ -1,8 +1,8 @@
 import React from 'react';
 
 const TableRow = (props) =>(
-    <tr>
-        <td >{props.data.id}</td>
+    <tr className="table-body-row">
+        <td>{props.data.id}</td>
         <td contentEditable suppressContentEditableWarning 
             onBlur={(e) => props.handleUpdateRow({id:props.data.id, prop: 'userId', value: e.target.innerHTML})}>
             {props.data.userId}
@@ -14,21 +14,21 @@ const TableRow = (props) =>(
             onBlur={(e) => props.handleUpdateRow({id:props.data.id, prop: 'body', value: e.target.innerHTML})}>
             {props.data.body}
         </td>
-        <td contentEditable suppressContentEditableWarning><button onClick={(e) => {props.handleDeleteRow(props.data.id)}}>Remove</button></td>
+        <td><button className="button" onClick={(e) => {props.handleDeleteRow(props.data.id)}}>Remove</button></td>
     </tr>
 )
 
 const TableBody= (props) =>(
-    <thead>
+    <tbody className="table-content">
         { props.data && props.data.map((item, index) => (
                 <TableRow key={index}
-                          data={item}
-                          handleDeleteRow={props.handleDeleteRow}
-                          handleUpdateRow={props.handleUpdateRow}
-                        />
+                    data={item}
+                    handleDeleteRow={props.handleDeleteRow}
+                    handleUpdateRow={props.handleUpdateRow}
+                />
             )) 
         }
-    </thead>
+    </tbody>
 );
 
 export default TableBody;
